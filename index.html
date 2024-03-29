@@ -9,6 +9,10 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 20px;
+            background-color: #f2f2f2; /* เปลี่ยนสีพื้นหลัง */
+        }
+        h1 {
+            color: #333; /* เปลี่ยนสีข้อความ */
         }
         .input-container {
             margin-bottom: 20px;
@@ -18,6 +22,8 @@
             padding: 8px;
             font-size: 16px;
             margin-right: 10px;
+            border: 1px solid #ccc; /* เพิ่มเส้นขอบ */
+            border-radius: 5px; /* มุมขอบโค้ง */
         }
         button {
             padding: 10px 20px;
@@ -26,10 +32,14 @@
             color: white;
             border: none;
             cursor: pointer;
+            border-radius: 5px; /* มุมขอบโค้ง */
         }
         .result {
             font-size: 18px;
             margin-top: 20px;
+        }
+        p {
+            margin: 5px 0; /* ลดระยะห่างระหว่างย่อหน้า */
         }
     </style>
 </head>
@@ -37,28 +47,33 @@
     <h1>Water Calculator</h1>
     
     <div class="input-container">
-        <input type="number" id="areaAndFertilizer" placeholder="Area (hectares)" oninput="calculateWaterNeeded()">
-        <input type="number" id="fertilizerAmount" placeholder="Fertilizer (kg)" oninput="calculateWaterNeeded()">
+        <input type="number" id="areaAndFertilizer" placeholder="พื้นที่ (ไร่)" oninput="calculateWaterNeeded()">
+        <input type="number" id="fertilizerAmount" placeholder="ปุ๋ย (กิโลกรัม)" oninput="calculateWaterNeeded()">
     </div>
 
     <div class="result">
-        <p>Amount of fertilizer needed per hectare: <span id="fertilizerPerHectare">0.00</span> kg</p>
-        <p>Amount of fertilizer needed per acre: <span id="fertilizerPerAcre">0.00</span> kg</p>
+        <p>ปริมาณปุ๋ยที่ต้องใช้ต่อไร่: <span id="fertilizerPerHectare">0.00</span> กิโลกรัม</p>
+        <p>ปริมาณปุ๋ยที่ต้องใช้ต่อเอเคอร์: <span id="fertilizerPerAcre">0.00</span> กิโลกรัม</p>
     </div>
 
     <div class="input-container">
-        <input type="number" id="usedArea" placeholder="Area used (hectares)" oninput="calculateRemainingFertilizer()">
-        <input type="number" id="usedFertilizer" placeholder="Fertilizer used (kg)" oninput="calculateRemainingFertilizer()">
-        <input type="number" id="remainingArea" placeholder="Remaining area (hectares)" oninput="calculateRemainingFertilizer()">
+        <input type="number" id="usedArea" placeholder="พื้นที่ที่ใช้ไป (ไร่)" oninput="calculateRemainingFertilizer()">
+        <input type="number" id="usedFertilizer" placeholder="ปุ๋ยที่ใช้ไป (กิโลกรัม)" oninput="calculateRemainingFertilizer()">
+        <input type="number" id="remainingArea" placeholder="พื้นที่ที่เหลือ (ไร่)" oninput="calculateRemainingFertilizer()">
+        <input type="number" id="Amountfertilizer" placeholder="ปุ๋ยที่เหลือ (กิโลกรัม)" oninput="calculateRemainingFertilizer()">
+        <input type="number" id="open" placeholder="เปิดจาน (กิโลกรัม)" oninput="calculateRemainingFertilizer()">
     </div>
 
     <div class="result">
-        <p>Remaining fertilizer amount: <span id="remainingFertilizer">0.00</span> kg</p>
-        <p>New fertilizer amount per hectare: <span id="newFertilizerPerHectare">0.00</span> kg</p>
+        <p>ปุ๋ยที่ใช้: <span id="ปุ๋ยที่ใช้">0.00</span> กิโลกรัม</p>
+        <p>ปริมาณปุ๋ยที่เหลือต่อไร่: <span id="ปุ๋ยต่อไร่">0.00</span> กิโลกรัม</p>
+        <p>ปริมาณเปิดจาน: <span id="เปิดจาน">0.00</span> กิโลกรัม</p>
     </div>
 
     <script>
+       
         function calculateWaterNeeded() {
+            
             var area = parseFloat(document.getElementById("areaAndFertilizer").value);
             var fertilizer = parseFloat(document.getElementById("fertilizerAmount").value);
 
@@ -68,17 +83,21 @@
             document.getElementById("fertilizerPerHectare").innerText = waterNeededPerHectare.toFixed(2);
             document.getElementById("fertilizerPerAcre").innerText = waterNeededPerAcre.toFixed(2);
         }
-
+        
         function calculateRemainingFertilizer() {
             var remainingArea = parseFloat(document.getElementById("remainingArea").value);
             var usedArea = parseFloat(document.getElementById("usedArea").value);
             var usedFertilizer = parseFloat(document.getElementById("usedFertilizer").value);
+            var AmoutFertilizer = parseFloat(document.getElementById("Amountfertilizer").value);
+            var open = parseFloat(document.getElementById("open").value);
 
-            var remainingFertilizer = (remainingArea * usedFertilizer) - (usedArea * usedFertilizer);
-            var newFertilizerPerHectare = remainingFertilizer / remainingArea;
-
-            document.getElementById("remainingFertilizer").innerText = remainingFertilizer.toFixed(2);
-            document.getElementById("newFertilizerPerHectare").innerText = newFertilizerPerHectare.toFixed(2);
+            var used = usedFertilizer / usedArea / 6.25  ;
+            var remainingFertilizer = AmoutFertilizer / 6.25 / remainingArea;
+            var newFertilizerPerHectare = (open / used) * remainingFertilizer ;
+            
+            document.getElementById("ปุ๋ยที่ใช้").innerText = used.toFixed(2);
+            document.getElementById("ปุ๋ยต่อไร่").innerText = remainingFertilizer.toFixed(2);
+            document.getElementById("เปิดจาน").innerText = newFertilizerPerHectare.toFixed(2);
         }
     </script>
 </body>
