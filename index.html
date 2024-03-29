@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Water Calculator</h1>
+    
+    <div class="input-container">
+        <input type="number" id="areaAndFertilizer" placeholder="Area (hectares)">
+        <input type="number" id="fertilizerAmount" placeholder="Fertilizer (kg)">
+        <button onclick="calculateWaterNeeded()">Calculate</button>
+    </div>
+
+    <div class="result">
+        <p>Amount of fertilizer needed per hectare: <span id="fertilizerPerHectare">0.00</span> kg</p>
+        <p>Amount of fertilizer needed per acre: <span id="fertilizerPerAcre">0.00</span> kg</p>
+    </div>
+
+    <div class="input-container">
+        <input type="number" id="usedArea" placeholder="Area used (hectares)">
+        <input type="number" id="usedFertilizer" placeholder="Fertilizer used (kg)">
+        <input type="number" id="remainingArea" placeholder="Remaining area (hectares)">
+        <button onclick="calculateRemainingFertilizer()">Calculate Remaining Fertilizer</button>
+    </div>
+
+    <div class="result">
+        <p>Remaining fertilizer amount: <span id="remainingFertilizer">0.00</span> kg</p>
+        <p>New fertilizer amount per hectare: <span id="newFertilizerPerHectare">0.00</span> kg</p>
+    </div>
+
+    <script>
+        function calculateWaterNeeded() {
+            var area = parseFloat(document.getElementById("areaAndFertilizer").value);
+            var fertilizer = parseFloat(document.getElementById("fertilizerAmount").value);
+
+            var waterNeededPerHectare = area * fertilizer;
+            var waterNeededPerAcre = waterNeededPerHectare / 6.25;
+
+            document.getElementById("fertilizerPerHectare").innerText = waterNeededPerHectare.toFixed(2);
+            document.getElementById("fertilizerPerAcre").innerText = waterNeededPerAcre.toFixed(2);
+        }
+
+        function calculateRemainingFertilizer() {
+            var remainingArea = parseFloat(document.getElementById("remainingArea").value);
+            var usedArea = parseFloat(document.getElementById("usedArea").value);
+            var usedFertilizer = parseFloat(document.getElementById("usedFertilizer").value);
+
+            var remainingFertilizer = (remainingArea * usedFertilizer) - (usedArea * usedFertilizer);
+            var newFertilizerPerHectare = remainingFertilizer / remainingArea;
+
+            document.getElementById("remainingFertilizer").innerText = remainingFertilizer.toFixed(2);
+            document.getElementById("newFertilizerPerHectare").innerText = newFertilizerPerHectare.toFixed(2);
+        }
+    </script>
+</body>
+</html>
