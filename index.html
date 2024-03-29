@@ -37,9 +37,8 @@
     <h1>Water Calculator</h1>
     
     <div class="input-container">
-        <input type="number" id="areaAndFertilizer" placeholder="Area (hectares)">
-        <input type="number" id="fertilizerAmount" placeholder="Fertilizer (kg)">
-        <button onclick="calculateWaterNeeded()">Calculate</button>
+        <input type="number" id="areaAndFertilizer" placeholder="Area (hectares)" oninput="calculateWaterNeeded()">
+        <input type="number" id="fertilizerAmount" placeholder="Fertilizer (kg)" oninput="calculateWaterNeeded()">
     </div>
 
     <div class="result">
@@ -48,10 +47,9 @@
     </div>
 
     <div class="input-container">
-        <input type="number" id="usedArea" placeholder="Area used (hectares)">
-        <input type="number" id="usedFertilizer" placeholder="Fertilizer used (kg)">
-        <input type="number" id="remainingArea" placeholder="Remaining area (hectares)">
-        <button onclick="calculateRemainingFertilizer()">Calculate Remaining Fertilizer</button>
+        <input type="number" id="usedArea" placeholder="Area used (hectares)" oninput="calculateRemainingFertilizer()">
+        <input type="number" id="usedFertilizer" placeholder="Fertilizer used (kg)" oninput="calculateRemainingFertilizer()">
+        <input type="number" id="remainingArea" placeholder="Remaining area (hectares)" oninput="calculateRemainingFertilizer()">
     </div>
 
     <div class="result">
