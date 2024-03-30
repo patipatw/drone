@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Water Calculator</title>
+    <title>Drone Calculator</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -20,7 +20,7 @@
         .input-container input {
             width: 100px;
             padding: 8px;
-            font-size: 16px;
+            font-size: 12px;
             margin-right: 10px;
             border: 1px solid #ccc; /* เพิ่มเส้นขอบ */
             border-radius: 5px; /* มุมขอบโค้ง */
@@ -35,7 +35,7 @@
             border-radius: 5px; /* มุมขอบโค้ง */
         }
         .result {
-            font-size: 18px;
+            font-size: 16px;
             margin-top: 20px;
         }
         p {
@@ -52,20 +52,26 @@
     </div>
 
     <div class="result">
-        <p>ปริมาณปุ๋ยที่ต้องใช้ต่อไร่: <span id="fertilizerPerHectare">0.00</span> กิโลกรัมต่อไร่</p>
-        <p>ปริมาณปุ๋ยที่ต้องใช้ต่อเอเคอร์: <span id="fertilizerPerAcre">0.00</span> กิโลกรัมต่อเฮกเตอร์</p>
+        <p>ปริมาณปุ๋ยต่อไร่: <span id="fertilizerPerHectare">0.00</span> กิโลกรัมต่อไร่</p>
+        <p>ปริมาณปุ๋ยต่อเฮกเตอร์: <span id="fertilizerPerAcre">0.00</span> กิโลกรัมต่อเฮกเตอร์</p>
     </div>
 
     <div class="input-container">
         <input type="number" id="usedArea" placeholder="พื้นที่ที่ใช้ไป (เฮกเตอร์)" oninput="calculateRemainingFertilizer()">
         <input type="number" id="usedFertilizer" placeholder="ปุ๋ยที่ใช้ไป (กิโลกรัม)" oninput="calculateRemainingFertilizer()">
+    </div>
+
+    <div class="result">
+        <p>ปริมาณปุ๋ยที่ได้ต่อไร่: <span id="ปุ๋ยที่ใช้">0.00</span> กิโลกรัมต่อไร่</p>
+    </div>
+
+    <div class="input-container">
         <input type="number" id="remainingArea" placeholder="พื้นที่ที่เหลือ (เฮกเตอร์)" oninput="calculateRemainingFertilizer()">
         <input type="number" id="Amountfertilizer" placeholder="ปุ๋ยที่เหลือ (กิโลกรัม)" oninput="calculateRemainingFertilizer()">
         <input type="number" id="open" placeholder="เปิดจาน " oninput="calculateRemainingFertilizer()">
     </div>
 
     <div class="result">
-        <p>ปริมาณปุ๋ยที่ได้ต่อไร่: <span id="ปุ๋ยที่ใช้">0.00</span> กิโลกรัมต่อไร่</p>
         <p>ปริมาณปุ๋ยที่เหลือต่อไร่: <span id="ปุ๋ยต่อไร่">0.00</span> กิโลกรัมต่อไร่</p>
         <p>เปิดจาน: <span id="เปิดจาน">0.00</p>
     </div>
