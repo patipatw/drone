@@ -51,8 +51,7 @@
     </style>
 </head>
 <body>
-    <h1>Drone Calculator</h1>
-
+    <p>โหมดM+</p>
     <section class="section">
         <div class="input-container">
             <input type="number" id="usedAreaM" placeholder="พื้นที่ใช้ (เฮกเตอร์)" oninput="calculateRemainingFertilizer()">
@@ -62,10 +61,11 @@
 
         <div class="result">
             <p>ปริมาณปุ๋ยต่อไร่: <span id="ปุ๋ยที่ใช้M">0.00</span> กิโลกรัมต่อไร่</p>
-            <p>1 กิโลต่อไร่เปิดจาน: <span id="1กิโล">0.00</span> กิโลกรัมต่อไร่</p>
+            <p>1 กิโลต่อไร่เปิดจาน: <span id="1กิโล">0.00</span></p>
         </div>
     </section>
-    
+
+    <p>คำนวณปุ๋ยทั้งหมด</p>
     <section class="section">
         <div class="input-container">
             <input type="number" id="areaAndFertilizer" placeholder="พื้นที่ (เฮกเตอร์)" oninput="calculateRemainingFertilizer()">
@@ -75,10 +75,11 @@
         <div class="result">
             <p>ปริมาณปุ๋ยต่อไร่: <span id="fertilizerPerAcre">0.00</span> กิโลกรัมต่อไร่</p>
             <p>ปริมาณปุ๋ยต่อเฮกเตอร์: <span id="fertilizerPerHectare">0.00</span> กิโลกรัมต่อเฮกเตอร์</p>
-            <p>ปริมาณเปิดจาน: <span id="newopen">0.00</span> กิโลกรัมต่อไร่</p>
+            <p>เปิดจาน: <span id="newopen">0.00</span> คิดจากM+</p>
         </div>
     </section>
 
+    <p>โหมดM</p>   
     <section class="section">
         <div class="input-container">
             <input type="number" id="usedArea" placeholder="พื้นที่ใช้ (เฮกเตอร์)" oninput="calculateRemainingFertilizer()">
@@ -88,15 +89,22 @@
         <div class="result">
             <p>ปริมาณปุ๋ยต่อไร่: <span id="ปุ๋ยต่อไร่">0.00</span> กิโลกรัมต่อไร่</p>
         </div>
-    </section>
-
-    <section class="section">
+    
         <div class="input-container">
             <input type="number" id="remainingArea" placeholder="พื้นที่เหลือ (เฮกเตอร์)" oninput="calculateRemainingFertilizer()">
         </div>
 
         <div class="result">
             <p>ต้องการปุ๋ยเพิ่มอีก: <span id="ต้องการอีก">0.00</span> กิโลกรัม</p>
+        </div>
+
+        <div class="input-container">
+            <input type="number" id="openm" placeholder="เปิดจาน" oninput="calculateRemainingFertilizer()">
+            <input type="number" id="amountfer" placeholder="ปุ๋ยที่เหลือ" oninput="calculateRemainingFertilizer()">
+        </div>
+
+        <div class="result">
+            <p>ต้องเปิดจาน: <span id="ต้องเปิด">0.00</span></p>
         </div>
     </section>
 
@@ -120,6 +128,10 @@
             
             var remainingArea = parseFloat(document.getElementById("remainingArea").value);
             var needused = (usedFertilizer / usedArea) * remainingArea;
+
+            var openm = parseFloat(document.getElementById("openm").value);
+            var amountfer = parseFloat(document.getElementById("amountfer").value);
+            var needopen = (openm / (usedFertilizer / usedArea)) * amountfer/remainingArea ;
             
             document.getElementById("ปุ๋ยที่ใช้M").innerText = used.toFixed(2);
             document.getElementById("1กิโล").innerText = onekg.toFixed(2);
@@ -128,6 +140,8 @@
             document.getElementById("newopen").innerText = newopen.toFixed(2);
             document.getElementById("ปุ๋ยต่อไร่").innerText = usedPerAcre.toFixed(2);
             document.getElementById("ต้องการอีก").innerText = needused.toFixed(2);
+            document.getElementById("ต้องเปิด").innerText = needopen.toFixed(2);
+
         }
     </script>
 </body>
