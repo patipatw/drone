@@ -8,7 +8,7 @@
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            padding: 20px;
+            padding: 10px;
             background-color: #f2f2f2;
         }
         h1 {
@@ -16,20 +16,20 @@
             text-align: center;
         }
         .input-container {
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             text-align: center;
         }
         .input-container input {
-            width: 100px;
-            padding: 8px;
+            width: 70px;
+            padding: 6px;
             font-size: 12px;
-            margin-right: 10px;
+            margin-right: 5px;
             border: 1px solid #ccc;
             border-radius: 5px;
         }
         button {
-            padding: 10px 20px;
-            font-size: 16px;
+            padding: 8px 15px;
+            font-size: 14px;
             background-color: blue;
             color: white;
             border: none;
@@ -37,8 +37,8 @@
             border-radius: 5px;
         }
         .result {
-            font-size: 16px;
-            margin-top: 20px;
+            font-size: 14px;
+            margin-top: 10px;
             text-align: center;
         }
         p {
@@ -46,7 +46,7 @@
             text-align: center;
         }
         .section {
-            margin-bottom: 40px;
+            margin-bottom: 20px;
         }
     </style>
 </head>
@@ -55,48 +55,48 @@
 
     <section class="section">
         <div class="input-container">
-            <input type="number" id="usedAreaM" placeholder="พื้นที่ที่ใช้ไป (เฮกเตอร์)" oninput="calculateRemainingFertilizer()">
-            <input type="number" id="usedFertilizerM" placeholder="ปุ๋ยที่ใช้ไป (กิโลกรัม)" oninput="calculateRemainingFertilizer()">
+            <input type="number" id="usedAreaM" placeholder="พื้นที่ใช้ (เฮกเตอร์)" oninput="calculateRemainingFertilizer()">
+            <input type="number" id="usedFertilizerM" placeholder="ปุ๋ยใช้ (กก.)" oninput="calculateRemainingFertilizer()">
             <input type="number" id="openM" placeholder="เปิดจาน " oninput="calculateRemainingFertilizer()">
         </div>
 
         <div class="result">
-            <p>ปริมาณปุ๋ยที่ได้ต่อไร่: <span id="ปุ๋ยที่ใช้M">0.00</span> กิโลกรัมต่อไร่</p>
-            <p>1กิโลต่อไร่เปิดจาน: <span id="1กิโล">0.00</span> กิโลกรัมต่อไร่</p>
+            <p>ปริมาณปุ๋ยต่อไร่: <span id="ปุ๋ยที่ใช้M">0.00</span> กิโลกรัมต่อไร่</p>
+            <p>1 กิโลต่อไร่เปิดจาน: <span id="1กิโล">0.00</span> กิโลกรัมต่อไร่</p>
         </div>
     </section>
     
     <section class="section">
         <div class="input-container">
             <input type="number" id="areaAndFertilizer" placeholder="พื้นที่ (เฮกเตอร์)" oninput="calculateRemainingFertilizer()">
-            <input type="number" id="fertilizerAmount" placeholder="ปุ๋ย (กิโลกรัม)" oninput="calculateRemainingFertilizer()">
+            <input type="number" id="fertilizerAmount" placeholder="ปุ๋ย (กก.)" oninput="calculateRemainingFertilizer()">
         </div>
 
         <div class="result">
             <p>ปริมาณปุ๋ยต่อไร่: <span id="fertilizerPerAcre">0.00</span> กิโลกรัมต่อไร่</p>
             <p>ปริมาณปุ๋ยต่อเฮกเตอร์: <span id="fertilizerPerHectare">0.00</span> กิโลกรัมต่อเฮกเตอร์</p>
-            <p>เปิดจาน: <span id="newopen">0.00</span> กิโลกรัมต่อไร่</p>
+            <p>ปริมาณเปิดจาน: <span id="newopen">0.00</span> กิโลกรัมต่อไร่</p>
         </div>
     </section>
 
     <section class="section">
         <div class="input-container">
-            <input type="number" id="usedArea" placeholder="พื้นที่ที่ใช้ไป (เฮกเตอร์)" oninput="calculateRemainingFertilizer()">
-            <input type="number" id="usedFertilizer" placeholder="ปุ๋ยที่ใช้ไป (กิโลกรัม)" oninput="calculateRemainingFertilizer()">
+            <input type="number" id="usedArea" placeholder="พื้นที่ใช้ (เฮกเตอร์)" oninput="calculateRemainingFertilizer()">
+            <input type="number" id="usedFertilizer" placeholder="ปุ๋ยใช้ (กก.)" oninput="calculateRemainingFertilizer()">
         </div>
 
         <div class="result">
-            <p>ปริมาณปุ๋ยที่ได้ต่อไร่: <span id="ปุ๋ยต่อไร่">0.00</span> กิโลกรัมต่อไร่</p>
+            <p>ปริมาณปุ๋ยต่อไร่: <span id="ปุ๋ยต่อไร่">0.00</span> กิโลกรัมต่อไร่</p>
         </div>
     </section>
 
     <section class="section">
         <div class="input-container">
-            <input type="number" id="remainingArea" placeholder="พื้นที่ที่เหลือ (เฮกเตอร์)" oninput="calculateRemainingFertilizer()">
+            <input type="number" id="remainingArea" placeholder="พื้นที่เหลือ (เฮกเตอร์)" oninput="calculateRemainingFertilizer()">
         </div>
 
         <div class="result">
-            <p>ต้องการปุ๋ยอีก: <span id="ต้องการอีก">0.00</span> กิโลกรัม</p>
+            <p>ต้องการปุ๋ยเพิ่มอีก: <span id="ต้องการอีก">0.00</span> กิโลกรัม</p>
         </div>
     </section>
 
