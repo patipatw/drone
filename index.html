@@ -9,11 +9,31 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 10px;
-            background-color: #f2f2f2;
+            background-color: #f7f7f7;
+        }
+        .app-container {
+            border-radius: 20px;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: 0 auto;
         }
         h1 {
             color: #333;
             text-align: center;
+            margin-bottom: 20px;
+        }
+        .mode {
+            font-weight: bold;
+            font-size: 18px;
+            color: #4CAF50;
+            text-align: center;
+            margin-top: 20px;
+            text-decoration: underline;
+        }
+        .section {
+            margin-bottom: 20px;
         }
         .input-container {
             margin-bottom: 10px;
@@ -21,92 +41,95 @@
         }
         .input-container input {
             width: 70px;
-            padding: 6px;
-            font-size: 12px;
-            margin-right: 5px;
+            padding: 8px;
+            font-size: 14px;
+            margin-right: 8px;
             border: 1px solid #ccc;
             border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
         button {
-            padding: 8px 15px;
-            font-size: 14px;
-            background-color: blue;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
             color: white;
             border: none;
             cursor: pointer;
             border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
         .result {
-            font-size: 14px;
-            margin-top: 10px;
+            font-size: 16px;
+            margin-top: 15px;
             text-align: center;
         }
         p {
             margin: 5px 0;
             text-align: center;
         }
-        .section {
-            margin-bottom: 20px;
-        }
     </style>
 </head>
 <body>
-    <p>โหมดM+</p>
-    <section class="section">
-        <div class="input-container">
-            <input type="number" id="usedAreaM" placeholder="พื้นที่ใช้ (เฮกเตอร์)" oninput="calculateRemainingFertilizer()">
-            <input type="number" id="usedFertilizerM" placeholder="ปุ๋ยใช้ (กก.)" oninput="calculateRemainingFertilizer()">
-            <input type="number" id="openM" placeholder="เปิดจาน " oninput="calculateRemainingFertilizer()">
-        </div>
+    <div class="app-container">
+        <h1>Drone Calculator</h1>
 
-        <div class="result">
-            <p>ปริมาณปุ๋ยต่อไร่: <span id="ปุ๋ยที่ใช้M">0.00</span> กิโลกรัมต่อไร่</p>
-            <p>1 กิโลต่อไร่เปิดจาน: <span id="1กิโล">0.00</span></p>
-        </div>
-    </section>
+        <div class="mode">โหมด M+</div>
+        <section class="section">
+            <div class="input-container">
+                <input type="number" id="usedAreaM" placeholder="พื้นที่ใช้ (เฮกเตอร์)" oninput="calculateRemainingFertilizer()">
+                <input type="number" id="usedFertilizerM" placeholder="ปุ๋ยใช้ (กก.)" oninput="calculateRemainingFertilizer()">
+                <input type="number" id="openM" placeholder="เปิดจาน " oninput="calculateRemainingFertilizer()">
+            </div>
 
-    <p>คำนวณปุ๋ยทั้งหมด</p>
-    <section class="section">
-        <div class="input-container">
-            <input type="number" id="areaAndFertilizer" placeholder="พื้นที่ (เฮกเตอร์)" oninput="calculateRemainingFertilizer()">
-            <input type="number" id="fertilizerAmount" placeholder="ปุ๋ย (กก.)" oninput="calculateRemainingFertilizer()">
-        </div>
+            <div class="result">
+                <p>ปริมาณปุ๋ยต่อไร่: <span id="ปุ๋ยที่ใช้M">0.00</span> กิโลกรัมต่อไร่</p>
+                <p>1 กิโลต่อไร่เปิดจาน: <span id="1กิโล">0.00</span></p>
+            </div>
+        </section>
 
-        <div class="result">
-            <p>ปริมาณปุ๋ยต่อไร่: <span id="fertilizerPerAcre">0.00</span> กิโลกรัมต่อไร่</p>
-            <p>ปริมาณปุ๋ยต่อเฮกเตอร์: <span id="fertilizerPerHectare">0.00</span> กิโลกรัมต่อเฮกเตอร์</p>
-            <p>เปิดจาน: <span id="newopen">0.00</span> คิดจากM+</p>
-        </div>
-    </section>
+        <div class="mode">คำนวณปุ๋ยทั้งหมด</div>
+        <section class="section">
+            <div class="input-container">
+                <input type="number" id="areaAndFertilizer" placeholder="พื้นที่ (เฮกเตอร์)" oninput="calculateRemainingFertilizer()">
+                <input type="number" id="fertilizerAmount" placeholder="ปุ๋ย (กก.)" oninput="calculateRemainingFertilizer()">
+            </div>
 
-    <p>โหมดM</p>   
-    <section class="section">
-        <div class="input-container">
-            <input type="number" id="usedArea" placeholder="พื้นที่ใช้ (เฮกเตอร์)" oninput="calculateRemainingFertilizer()">
-            <input type="number" id="usedFertilizer" placeholder="ปุ๋ยใช้ (กก.)" oninput="calculateRemainingFertilizer()">
-        </div>
+            <div class="result">
+                <p>ปริมาณปุ๋ยต่อไร่: <span id="fertilizerPerAcre">0.00</span> กิโลกรัมต่อไร่</p>
+                <p>ปริมาณปุ๋ยต่อเฮกเตอร์: <span id="fertilizerPerHectare">0.00</span> กิโลกรัมต่อเฮกเตอร์</p>
+                <p>เปิดจาน: <span id="newopen">0.00</span> คิดจาก M+</p>
+            </div>
+        </section>
 
-        <div class="result">
-            <p>ปริมาณปุ๋ยต่อไร่: <span id="ปุ๋ยต่อไร่">0.00</span> กิโลกรัมต่อไร่</p>
-        </div>
-    
-        <div class="input-container">
-            <input type="number" id="remainingArea" placeholder="พื้นที่เหลือ (เฮกเตอร์)" oninput="calculateRemainingFertilizer()">
-        </div>
+        <div class="mode">โหมด M</div>
+        <section class="section">
+            <div class="input-container">
+                <input type="number" id="usedArea" placeholder="พื้นที่ใช้ (เฮกเตอร์)" oninput="calculateRemainingFertilizer()">
+                <input type="number" id="usedFertilizer" placeholder="ปุ๋ยใช้ (กก.)" oninput="calculateRemainingFertilizer()">
+            </div>
 
-        <div class="result">
-            <p>ต้องการปุ๋ยเพิ่มอีก: <span id="ต้องการอีก">0.00</span> กิโลกรัม</p>
-        </div>
+            <div class="result">
+                <p>ปริมาณปุ๋ยต่อไร่: <span id="ปุ๋ยต่อไร่">0.00</span> กิโลกรัมต่อไร่</p>
+            </div>
+        
+            <div class="input-container">
+                <input type="number" id="remainingArea" placeholder="พื้นที่เหลือ (เฮกเตอร์)" oninput="calculateRemainingFertilizer()">
+            </div>
 
-        <div class="input-container">
-            <input type="number" id="openm" placeholder="เปิดจาน" oninput="calculateRemainingFertilizer()">
-            <input type="number" id="amountfer" placeholder="ปุ๋ยที่เหลือ" oninput="calculateRemainingFertilizer()">
-        </div>
+            <div class="result">
+                <p>ต้องการปุ๋ยเพิ่มอีก: <span id="ต้องการอีก">0.00</span> กิโลกรัม</p>
+            </div>
 
-        <div class="result">
-            <p>ต้องเปิดจาน: <span id="ต้องเปิด">0.00</span></p>
-        </div>
-    </section>
+            <div class="input-container">
+                <input type="number" id="openm" placeholder="เปิดจาน" oninput="calculateRemainingFertilizer()">
+                <input type="number" id="amountfer" placeholder="ปุ๋ยที่เหลือ" oninput="calculateRemainingFertilizer()">
+            </div>
+
+            <div class="result">
+                <p>ต้องเปิดจาน: <span id="ต้องเปิด">0.00</span></p>
+            </div>
+        </section>
+    </div>
 
     <script>
         function calculateRemainingFertilizer() {
@@ -141,7 +164,6 @@
             document.getElementById("ปุ๋ยต่อไร่").innerText = usedPerAcre.toFixed(2);
             document.getElementById("ต้องการอีก").innerText = needused.toFixed(2);
             document.getElementById("ต้องเปิด").innerText = needopen.toFixed(2);
-
         }
     </script>
 </body>
