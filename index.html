@@ -84,6 +84,13 @@
         th {
             background-color: #f2f2f2;
         }
+        .with-frame {
+            border: 1px solid #ccc; /* Add border */
+            border-radius: 5px; /* Add border radius for a rounded look */
+            padding: 15px; /* Add padding for spacing */
+            background-color: #00c21a; /* Add background color */
+            margin-bottom: 20px; /* Add margin for spacing */
+}
         
     </style>
 </head>
@@ -145,7 +152,7 @@
         </section>
 
         <div class="mode">โหมด M</div>
-        <section class="section">
+        <section class="section with-frame">
             <table>
                 <tr>
                     <th>ข้อมูล</th>
@@ -163,6 +170,11 @@
                     <td>ปริมาณปุ๋ยต่อไร่</td>
                     <td><span id="ปุ๋ยต่อไร่">0.00</span> กิโลกรัมต่อไร่</td>
                 </tr>
+                
+            </table>
+        </section>
+        <section class="section">
+            <table>
                 <tr>
                     <td>พื้นที่เหลือ (เฮกเตอร์)</td>
                     <td><input type="number" id="remainingArea" placeholder="พื้นที่เหลือ (เฮกเตอร์)" oninput="calculateRemainingFertilizer()"></td>
